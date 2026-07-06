@@ -1,0 +1,471 @@
+/* Main Content */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.main-heading {
+  font-size: 3.8rem;
+  line-height: 1.05;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.highlight {
+  color: #10b981;
+}
+
+.description {
+  font-size: 20px;
+  color: #444;
+  max-width: 520px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.primary-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.primary-btn:hover {
+  background: #059669;
+  transform: translateY(-3px);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: #111;
+  border: 2px solid #ddd;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.secondary-btn:hover {
+  border-color: #10b981;
+  color: #10b981;
+}
+
+/* Image Section */
+.right-image {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.harvest-info {
+  text-align: center;
+}
+
+.live-indicator {
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.harvest-info strong {
+  font-size: 35px;
+  display: block;
+  color: #111;
+}
+
+/* Solis Intteligence Section */
+.intelligence-section {
+  padding: 80px 0;
+  background: #f8f9f8;
+}
+.intelligence-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.intelligence-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.intelligence-header h2 {
+  font-size: 51px;
+  font-weight: 700;
+  color: #1a3c34;
+  margin-bottom: 12px;
+}
+
+.intelligence-header p {
+  font-size: 18px;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Main Grid */
+.intelligence-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.vertical-arbors {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  position: relative;
+}
+.vertical-arbors img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+.overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 40px 35px 35px;
+}
+
+.overlay-text h3 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+.overlay-text p {
+  color: #ddd;
+}
+
+/* Aqueous Loops */
+.aqueous-loops {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.aqueous-loops .icon {
+  font-size: 42px;
+  margin-bottom: 22px;
+}
+.aqueous-loops h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #1a3c34;
+}
+.aqueous-loops p {
+  color: #555;
+  margin-bottom: 40px;
+  flex: 1;
+}
+
+.efficiency {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.eff-number {
+  font-size: 45px;
+  font-weight: 700;
+  color: #1a3c34;
+}
+.eff-label {
+  font-size: 18px;
+  color: #666;
+}
+
+/* Bottom Grid */
+.intelligence-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.botanical-core {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+.botanical-core .icon {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+.botanical-core h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #1a3c34;
+}
+.botanical-core p {
+  color: #555;
+}
+
+.interior-section {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.interior-section img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.view-habitats {
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a3c34;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+.view-habitats:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Live Diagnostics */
+.live-diagnostics {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 40px;
+}
+
+.diagnostics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+.diagnostics-header h2 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #166534;
+}
+.diagnostics-header p {
+  color: #555;
+  font-size: 18px;
+}
+
+.refresh-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: white;
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.refresh-btn:hover {
+  transform: rotate(180deg);
+  border-color: #10b981;
+}
+
+/* Grid */
+.diagnostics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.diag-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s;
+}
+.diag-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.peak {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Solar Generation */
+.load-bar {
+  margin-top: 24px;
+}
+.load-bar .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.bar-container {
+  height: 8px;
+  background: #eee;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.bar-fill {
+  height: 100%;
+  width: 100%;
+  background: 90deg, #10b981, #4ade80;
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+/* Reserves */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 90px;
+  margin-top: 20px;
+}
+.bar {
+  flex: 1;
+  background: #e0f2e0;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+.bar.active {
+  background: #10b981;
+}
+
+/* Flow */
+.flow-stat {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.latency {
+  font-size: 51px;
+  font-weight: 700;
+  color: #166534;
+  line-height: 1;
+}
+.latency-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .intelligence-main-grid,
+  .intelligence-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+  .intelligence-header h2 {
+    font-size: 2.6rem;
+  }
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .main-heading {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .diagnostics-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --primary: #10b981;
+  --secondary: #60a5fa;
+  --tertiary: #fbbf24;
+  --neutral: #0f172a;
+}
+
+body {
+  font-family: "Geist", sans-serif;
+  line-height: 1.6;
+}
+
+.header {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.left-content {
+  max-width: 520px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 9999px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.main-heading {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #444;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.primary-btn {
+  background: #10b981;
+  color: white;
+  border-radius: 9999px;
+  padding: 16px 32px;
+  border: none;
+}
+
+.secondary-btn {
+  border: 2px solid #111;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  background: transparent;
+}
