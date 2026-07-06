@@ -24,7 +24,6 @@
   font-weight: 500;
   margin-bottom: 24px;
 }
-
 .live-dot {
   display: inline-block;
   width: 8px;
@@ -70,7 +69,6 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
 .primary-btn:hover {
   background: #14532d;
   transform: translateY(-3px);
@@ -87,7 +85,6 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
 .secondary-btn:hover {
   background: #111;
   color: white;
@@ -100,7 +97,6 @@
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
 }
-
 .project-image {
   width: 100%;
   height: auto;
@@ -139,7 +135,6 @@
   text-align: right;
   line-height: 1.2;
 }
-
 .energy-stat span {
   font-size: 15px;
   font-weight: 500;
@@ -202,6 +197,7 @@
   font-weight: 600;
   flex-shrink: 0;
 }
+
 .manifesto-item h3 {
   font-size: 23px;
   font-weight: 600;
@@ -212,7 +208,6 @@
   color: #555;
   line-height: 1.6;
 }
-
 .manifesto-image {
   position: relative;
   border-radius: 20px;
@@ -237,14 +232,12 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 260px;
 }
-
 .stat-number {
   font-size: 45px;
   font-weight: 700;
   color: #0f2b24;
   margin-bottom: 6px;
 }
-
 .stat-text {
   font-size: 16px;
   color: #444;
@@ -317,7 +310,6 @@
   font-size: 32px;
   margin-bottom: 24px;
 }
-
 .icon.green {
   background: #e0f2e9;
 }
@@ -373,6 +365,7 @@
   margin: 0 auto;
   align-items: center;
 }
+
 .email-input {
   flex: 1;
   padding: 16px 24px;
@@ -382,7 +375,6 @@
   outline: none;
   transition: all 0.3s;
 }
-
 .email-input:focus {
   border-color: #1a9a7b;
   box-shadow: 0 0 0 4px rgba(26, 154, 123, 0.1);
@@ -400,7 +392,6 @@
   transition: all 0.3s;
   white-space: nowrap;
 }
-
 .subscribe-btn:hover {
   background: #15876a;
   transform: translateY(-2px);
@@ -423,28 +414,14 @@
     padding: 90px 0;
   }
   .section-header h2 {
-    font-size: 2.6rem;
-  }
-  .manifesto-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
+    font-size: 42px; /* 2.6rem → px */
   }
   .manifesto-content h2 {
-    font-size: 2.6rem;
+    font-size: 42px; /* 2.6rem → px */
   }
   .stat-box {
     bottom: 30px;
     left: 30px;
-  }
-  .content-grid {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  .main-heading {
-    font-size: 3.4rem;
-  }
-  .footer-content {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -453,18 +430,7 @@
     padding: 80px 0;
   }
   .newsletter-container h2 {
-    font-size: 2.4rem;
-  }
-  .subscribe-form {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .subscribe-btn {
-    width: 100%;
-    padding: 16px;
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
+    font-size: 38px; /* 2.4rem → px */
   }
   .manifesto-section {
     padding: 80px 0;

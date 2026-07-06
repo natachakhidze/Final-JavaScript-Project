@@ -8,6 +8,7 @@ img {
   margin: 0 auto;
   padding: 80px 40px;
 }
+
 .content {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -33,7 +34,7 @@ img {
 .live-dot {
   width: 8px;
   height: 8px;
-  background: #10b981;
+  background: #4ade80;
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
@@ -134,14 +135,6 @@ img {
 .btn-link:hover {
   text-decoration: underline;
 }
-.live-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #4ade80;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
 
 /* Image Container */
 .power-image-container {
@@ -155,12 +148,15 @@ img {
   height: auto;
   display: block;
 }
+
+/* Signal Bars */
 .signal-bars {
   display: flex;
   gap: 3px;
   align-items: flex-end;
   height: 18px;
 }
+
 .bar {
   width: 5px;
   background: #4ade80;
@@ -168,7 +164,6 @@ img {
   height: 40%;
   animation: signal 1.5s infinite ease-in-out;
 }
-
 .bar:nth-child(2) {
   height: 65%;
   animation-delay: 0.2s;
@@ -218,16 +213,12 @@ img {
   font-weight: 600;
   text-decoration: none;
   font-size: 17px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
 }
-
 .explore-link:hover {
   color: #15876a;
 }
 
-/* Cards Grid */
+/* Cards */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -269,7 +260,7 @@ img {
   line-height: 1.55;
 }
 
-/* Evolve Your Industry Section */
+/* Evolve Section */
 .evolve-section {
   flex: 1;
   display: flex;
@@ -346,6 +337,7 @@ img {
     opacity: 1;
   }
 }
+
 @keyframes pulse {
   0%,
   100% {
@@ -363,25 +355,15 @@ img {
     gap: 40px;
     text-align: center;
   }
-  .description {
-    margin: 0 auto;
-  }
   .right-image {
     max-width: 600px;
     margin: 0 auto;
   }
+  .description {
+    margin: 0 auto;
+  }
   .action-buttons {
     justify-content: center;
-  }
-  .power-content {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-  .power-left {
-    max-width: 100%;
-  }
-  .power-title {
-    font-size: 3rem;
   }
 }
 
@@ -390,26 +372,16 @@ img {
     padding: 60px 30px;
   }
   .evolve-card h2 {
-    font-size: 2.6rem;
+    font-size: 42px;
   }
   .generative-section {
     padding: 70px 0;
   }
   .section-header h2 {
-    font-size: 2.4rem;
+    font-size: 38px;
   }
-  .cards-grid {
+  .cards {
     grid-template-columns: 1fr;
     gap: 25px;
-  }
-  .power-section {
-    padding: 80px 20px;
-  }
-  .power-title {
-    font-size: 2.4rem;
-  }
-  .power-buttons {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }

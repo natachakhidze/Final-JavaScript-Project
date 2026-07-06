@@ -1,153 +1,143 @@
-document.addEventListener("DOMContentLoaded", () => {
-  setActiveNav();
-  initNewsletterForms();
-  initJoinForm();
+document.addEventListener("DOMContentLoaded", initApp);
+
+function initApp() {
+  const page = detectPage();
+
+  initNavigation();
+  initForms();
   initSmoothScroll();
   initUIEffects();
   initMobileMenu();
-  initPageFeatures();
-});
+  initPageLogic(page);
+}
+
+/* Detecting Pages */
+function detectPage() {
+  const path = location.pathname.toLowerCase();
+
+  if (path.includes("architecture")) return "architecture";
+  if (path.includes("energy")) return "energy";
+  if (path.includes("intelligence")) return "intelligence";
+
+  return "index";
+}
 
 /* Navigation */
-function setActiveNav() {
+function initNavigation() {
   const links = document.querySelectorAll(".main-nav a");
-  const currentPath = window.location.pathname;
+  const current = location.pathname.split("/").pop();
 
   links.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href) return;
+    const href = link.getAttribute("href")?.split("/").pop();
 
-    // More reliable active state
     if (
-      currentPath === href ||
-      (currentPath.includes("index.html") && href.includes("index.html")) ||
-      (currentPath === "/" && href.includes("index.html"))
+      href &&
+      (href === current || (current === "" && href === "index.html"))
     ) {
       link.classList.add("active");
     }
   });
 }
 
-/* Newsletter and Forms */
-function initNewsletterForms() {
-  const forms = document.querySelectorAll(".subscribe-form");
-
-  forms.forEach((form) => {
-    form.addEventListener("submit", handleFormSubmit);
+/* Forms */
+function initForms() {
+  document.querySelectorAll(".subscribe-form").forEach((form) => {
+    form.addEventListener("submit", handleSubmit);
   });
-}
 
-function initJoinForm() {
   const joinForm = document.querySelector(".join-form");
-  if (!joinForm) return;
+  if (joinForm) {
+    const input = joinForm.querySelector("input");
+    const button = joinForm.querySelector("button");
 
-  const input = joinForm.querySelector("input[type='email']");
-  const button = joinForm.querySelector("button");
-
-  if (button) {
-    button.addEventListener("click", () => handleFormSubmit(null, input));
+    button?.addEventListener("click", () => handleSubmit(null, input));
   }
 }
 
-function handleFormSubmit(e, inputElement = null) {
+function handleSubmit(e, inputOverride) {
   if (e) e.preventDefault();
 
-  const input =
-    inputElement ||
-    (e && e.target.closest("form").querySelector("input[type='email']"));
+  const input = inputOverride || e?.target?.querySelector("input");
+
   if (!input) return;
 
   const email = input.value.trim();
 
-  if (!isValidEmail(email)) {
-    showToast("Please enter a valid email address", "error");
+  if (!validateEmail(email)) {
+    toast("Please enter a valid email address", "error");
     return;
   }
 
-  // Simulate API call
   input.disabled = true;
-  const originalText = input.placeholder;
+  const placeholder = input.placeholder;
   input.placeholder = "Processing...";
 
   setTimeout(() => {
     input.value = "";
     input.disabled = false;
-    input.placeholder = originalText;
-    showToast("Successfully joined the Solis collective! 🌿", "success");
-  }, 1200);
+    input.placeholder = placeholder;
+
+    localStorage.setItem("solis_user_email", email);
+
+    toast("Successfully joined the Solis collective! 🌿", "success");
+  }, 1000);
 }
 
-function isValidEmail(email) {
+function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-/* For Scrolling */
+/* For Smooth Scrolling */
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const target = document.querySelector(link.getAttribute("href"));
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const target = document.querySelector(a.getAttribute("href"));
+
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        target.scrollIntoView({ behavior: "smooth" });
       }
     });
   });
 }
 
-/* Effects */
+/* For Effects */
 function initUIEffects() {
-  // Button press effect
   document.addEventListener("click", (e) => {
-    if (e.target.tagName === "BUTTON" || e.target.closest("button")) {
-      const btn = e.target.closest("button");
-      btn.classList.add("pressed");
-      setTimeout(() => btn.classList.remove("pressed"), 180);
-    }
+    const btn = e.target.closest("button");
+    if (!btn) return;
+
+    btn.classList.add("pressed");
+    setTimeout(() => btn.classList.remove("pressed"), 150);
   });
 }
 
-/* For Mobile Resolution */
+/* For Mobile Resolutions */
 function initMobileMenu() {
-  // You can expand this later with a hamburger button
-  console.log(
-    "%cMobile menu ready (expandable)",
-    "color: #4ade80; font-size: 13px",
-  );
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".main-nav");
+
+  if (!burger || !nav) return;
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
 }
 
 /* Page Logic */
-function initPageFeatures() {
-  const page = getPage();
+function initPageLogic(page) {
+  const actions = {
+    index: initIndexPage,
+    architecture: initArchitecturePage,
+    energy: initEnergyPage,
+    intelligence: initIntelligencePage,
+  };
 
-  switch (page) {
-    case "architecture":
-      architecturePage();
-      break;
-    case "energy":
-      energyPage();
-      break;
-    case "intelligence":
-      intelligencePage();
-      break;
-    case "index":
-      indexPage();
-      break;
-  }
+  actions[page]?.();
 }
 
-function getPage() {
-  const path = window.location.pathname.toLowerCase();
-  if (path.includes("architecture")) return "architecture";
-  if (path.includes("energy")) return "energy";
-  if (path.includes("intelligence")) return "intelligence";
-  return "index";
-}
-
-/* Ecosystem */
-function indexPage() {
+/* Eco-System */
+function initIndexPage() {
   animateHero();
   animatePulseCards();
 }
@@ -156,72 +146,79 @@ function animateHero() {
   const hero = document.querySelector("main");
   if (!hero) return;
 
-  hero.style.opacity = "0";
-  hero.style.transform = "translateY(30px)";
-
-  setTimeout(() => {
-    hero.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
-    hero.style.opacity = "1";
-    hero.style.transform = "translateY(0)";
-  }, 150);
+  hero.animate(
+    [
+      { opacity: 0, transform: "translateY(30px)" },
+      { opacity: 1, transform: "translateY(0)" },
+    ],
+    {
+      duration: 800,
+      easing: "ease-out",
+      fill: "forwards",
+    },
+  );
 }
 
 function animatePulseCards() {
-  const cards = document.querySelectorAll(".pulse-card");
-  cards.forEach((card, i) => {
-    card.style.opacity = "0";
-    card.style.transform = "translateY(20px)";
-    setTimeout(
-      () => {
-        card.style.transition = "all 0.6s ease";
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      },
-      300 + i * 150,
-    );
-  });
-}
-
-/* Architecture */
-function architecturePage() {
-  animateCards(".card, .large-card, .small-card, .manifesto-item");
-}
-
-function animateCards(selector) {
-  const items = document.querySelectorAll(selector);
-  items.forEach((item, i) => {
-    item.style.opacity = "0";
-    item.style.transform = "translateY(25px)";
+  document.querySelectorAll(".pulse-card").forEach((card, i) => {
     setTimeout(() => {
-      item.style.transition = `all 0.5s ease ${i * 80}ms`;
-      item.style.opacity = "1";
-      item.style.transform = "translateY(0)";
-    }, 100);
-  });
-}
-
-/* Energy */
-function energyPage() {
-  animateBars();
-}
-
-function animateBars() {
-  const bars = document.querySelectorAll(".bar, .bar-fill, .progress");
-  bars.forEach((bar, i) => {
-    const originalTransform = bar.style.transform || "scaleY(0)";
-    bar.style.transform = originalTransform;
-
-    setTimeout(() => {
-      bar.style.transition = "transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
-      bar.style.transform = "scaleY(1)";
+      card.animate(
+        [
+          { opacity: 0, transform: "translateY(20px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        {
+          duration: 600,
+          fill: "forwards",
+        },
+      );
     }, i * 120);
   });
 }
 
+/* Architecture */
+function initArchitecturePage() {
+  animateElements(".card, .large-card, .small-card, .manifesto-item");
+}
+
+function animateElements(selector) {
+  document.querySelectorAll(selector).forEach((el, i) => {
+    setTimeout(() => {
+      el.animate(
+        [
+          { opacity: 0, transform: "translateY(25px)" },
+          { opacity: 1, transform: "translateY(0)" },
+        ],
+        {
+          duration: 500,
+          fill: "forwards",
+        },
+      );
+    }, i * 80);
+  });
+}
+
+/* Energy */
+function initEnergyPage() {
+  animateBars();
+}
+
+function animateBars() {
+  document.querySelectorAll(".bar, .bar-fill, .progress").forEach((bar, i) => {
+    setTimeout(() => {
+      bar.animate([{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }], {
+        duration: 1200,
+        easing: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        fill: "forwards",
+      });
+    }, i * 100);
+  });
+}
+
 /* Intelligence */
-function intelligencePage() {
+function initIntelligencePage() {
   liveCounter();
-  pulseDots();
+  pulseLiveDots();
 }
 
 function liveCounter() {
@@ -231,62 +228,61 @@ function liveCounter() {
   let value = 840;
 
   setInterval(() => {
-    value += Math.floor(Math.random() * 15 - 6);
-    if (value < 700) value = 700;
+    value += Math.floor(Math.random() * 10 - 4);
+    value = Math.max(700, value);
     el.textContent = `+${value}kg`;
   }, 1800);
 }
 
-function pulseDots() {
+function pulseLiveDots() {
   const dots = document.querySelectorAll(".live-dot");
-  if (dots.length === 0) return;
 
   setInterval(() => {
     dots.forEach((dot) => {
-      dot.style.transition = "opacity 0.3s";
-      dot.style.opacity = "0.3";
-
-      setTimeout(() => {
-        dot.style.opacity = "1";
-      }, 280);
+      dot.animate([{ opacity: 1 }, { opacity: 0.3 }, { opacity: 1 }], {
+        duration: 1000,
+      });
     });
-  }, 1100);
+  }, 1200);
 }
 
 /* Notifs */
-function showToast(message, type = "success") {
-  const toast = document.createElement("div");
-
+function toast(message, type = "success") {
   const colors = {
     success: "#22c55e",
     error: "#ef4444",
     info: "#3b82f6",
   };
 
-  toast.textContent = message;
-  toast.style.position = "fixed";
-  toast.style.bottom = "24px";
-  toast.style.left = "50%";
-  toast.style.transform = "translateX(-50%)";
-  toast.style.background = "#111";
-  toast.style.color = colors[type] || "#fff";
-  toast.style.padding = "14px 24px";
-  toast.style.borderRadius = "9999px";
-  toast.style.zIndex = "10000";
-  toast.style.fontSize = "15px";
-  toast.style.boxShadow = "0 10px 15px -3px rgb(0 0 0 / 0.3)";
-  toast.style.border = `1px solid ${colors[type]}33`;
-  toast.style.opacity = "0";
-  toast.style.transition = "all 0.3s ease";
+  const el = document.createElement("div");
+  el.textContent = message;
 
-  document.body.appendChild(toast);
+  Object.assign(el.style, {
+    position: "fixed",
+    bottom: "24px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    background: "#111",
+    color: colors[type],
+    padding: "14px 22px",
+    borderRadius: "999px",
+    fontSize: "14px",
+    zIndex: "9999",
+    opacity: "0",
+    transition: "0.3s",
+    border: `1px solid ${colors[type]}33`,
+  });
 
-  // Trigger animation
-  setTimeout(() => (toast.style.opacity = "1"), 10);
+  document.body.appendChild(el);
+
+  requestAnimationFrame(() => {
+    el.style.opacity = "1";
+  });
 
   setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateX(-50%) translateY(20px)";
-    setTimeout(() => toast.remove(), 300);
-  }, 2800);
+    el.style.opacity = "0";
+    el.style.transform = "translateX(-50%) translateY(20px)";
+
+    setTimeout(() => el.remove(), 300);
+  }, 2500);
 }
